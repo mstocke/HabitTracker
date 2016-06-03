@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Habit.h"
 
 @interface ViewController : UIViewController
 
+@property(weak,nonatomic)Habit *habit;
+@property (weak, nonatomic) IBOutlet UILabel *habitNameLabel;
 
 @end
 

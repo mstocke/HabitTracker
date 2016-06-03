@@ -8,10 +8,11 @@
 
 #import "HabitTableViewController.h"
 #import "Habit.h"
+#import "ViewController.h"
 
 @interface HabitTableViewController ()
 
-@property(weak,nonatomic)NSMutableArray *habitList;
+@property NSMutableArray *habitList;
 
 @end
 
@@ -27,7 +28,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //[self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,12 +69,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"habitCell" forIndexPath:indexPath];
-    NSLog(@"Cell");
     Habit *currentHabit = [_habitList objectAtIndex:indexPath.row];
-//    [currentHabit logHabit];
-    NSLog(@"Cell");
     cell.textLabel.text = currentHabit.name;
-    //cell.imageView.image = currentHabit.displayImage;
     return cell;
 }
 
@@ -111,14 +108,16 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ViewController *vc = [segue destinationViewController];
+    NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+
+    vc.habit = [_habitList objectAtIndex:selectedRowIndex.row];
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end

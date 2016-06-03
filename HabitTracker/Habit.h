@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Habit : NSObject
 
 @property(weak,nonatomic)NSString *name;
 @property(weak,nonatomic)NSString *desc;
 @property(nonatomic)BOOL isCompleted;
-@property(weak,nonatomic)NSString *displayImage;
+@property(weak,nonatomic)UIImage *displayImage;
 -(void)logHabit;
 
 @end
